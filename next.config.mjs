@@ -3,6 +3,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   compress: true,
+  ...(process.env.HOSTINGER_BUILD === "1" && {
+    experimental: {
+      // Keep constrained shared-host builds from exhausting the process thread limit.
+      cpus: 1,
+    },
+  }),
   images: {
     formats: ["image/avif", "image/webp"],
     minimumCacheTTL: 60 * 60 * 24 * 30,

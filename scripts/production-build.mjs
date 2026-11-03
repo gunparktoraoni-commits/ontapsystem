@@ -18,6 +18,7 @@ const hostingerLikeBuild =
 const env = {
   ...process.env,
   NODE_ENV: "production",
+  ...(hostingerLikeBuild && { HOSTINGER_BUILD: "1" }),
   NODE_OPTIONS: existingNodeOptions.includes("--max-old-space-size")
     ? existingNodeOptions
     : `${existingNodeOptions} ${heapFlag}`.trim(),
