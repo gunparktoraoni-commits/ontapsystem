@@ -163,6 +163,7 @@ export default function WarmPastel({
   const fullName = getDisplayName(d);
   const firstName = d.vcard.firstName || fullName.split(" ")[0] || fullName;
   const lastName = d.vcard.lastName || fullName.split(" ").slice(1).join(" ") || "";
+  const aboutText = d.vcard.about || d.bizCard.description || "";
   const coverImage = getCoverImageOrNull(d);
   const profileImage = d.bizCard.profileImage;
 

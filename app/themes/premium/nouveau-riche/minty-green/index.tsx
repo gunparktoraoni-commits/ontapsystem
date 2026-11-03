@@ -90,6 +90,7 @@ export default function MintyGreen({
   const name = getDisplayName(d);
   const initials = getInitials(d);
   const title = d.vcard.professionalTitle || d.bizCard.occupation;
+  const aboutText = d.vcard.about || d.bizCard.description || "";
   const coverImage = getCoverImageOrNull(d);
   const profileImage = getProfileImageOrNull(d);
 

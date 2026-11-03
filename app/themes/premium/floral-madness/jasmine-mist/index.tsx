@@ -107,6 +107,7 @@ export default function JasmineMist({
   const initials = getInitials(d);
   const title = d.vcard.professionalTitle || d.bizCard.occupation;
   const profileImage = getProfileImageOrNull(d);
+  const aboutText = d.vcard.about || d.bizCard.description || '';
 
   const galleryItems = buildGalleryItems(d);
   const videos = buildVideoItems(d);
