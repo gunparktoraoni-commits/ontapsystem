@@ -1,0 +1,51 @@
+{
+  "failedIds": [
+    331,
+    727,
+    817,
+    1141
+  ],
+  "timestamp": "2026-07-17T08:00:39.282Z",
+  "errorDetails": [
+    {
+      "socialLinkId": 331,
+      "reason": "Bizcard 280 has no associated user_id"
+    },
+    {
+      "socialLinkId": 331,
+      "reason": "Bizcard 280 has no associated user_id"
+    },
+    {
+      "socialLinkId": 331,
+      "reason": "Bizcard 280 has no associated user_id"
+    },
+    {
+      "socialLinkId": 727,
+      "reason": "\nInvalid `prisma.bizcard.findFirst()` invocation:\n\n{\n  where: {\n    url_alias: {\n      equals: \"ramduculan\",\n      mode: \"insensitive\",\n      ~~~~\n?     in?: String[] | Null,\n?     notIn?: String[] | Null,\n?     lt?: String | StringFieldRefInput,\n?     lte?: String | StringFieldRefInput,\n?     gt?: String | StringFieldRefInput,\n?     gte?: String | StringFieldRefInput,\n?     contains?: String | StringFieldRefInput,\n?     startsWith?: String | StringFieldRefInput,\n?     endsWith?: String | StringFieldRefInput,\n?     search?: String,\n?     not?: String | NestedStringNullableFilter | Null\n    }\n  },\n  select: {\n    bizcard_id: true,\n    url_alias: true\n  }\n}\n\nUnknown argument `mode`. Did you mean `lte`? Available options are marked with ?."
+    },
+    {
+      "socialLinkId": 727,
+      "reason": "\nInvalid `prisma.bizcard.findFirst()` invocation:\n\n{\n  where: {\n    url_alias: {\n      equals: \"ramduculan\",\n      mode: \"insensitive\",\n      ~~~~\n?     in?: String[] | Null,\n?     notIn?: String[] | Null,\n?     lt?: String | StringFieldRefInput,\n?     lte?: String | StringFieldRefInput,\n?     gt?: String | StringFieldRefInput,\n?     gte?: String | StringFieldRefInput,\n?     contains?: String | StringFieldRefInput,\n?     startsWith?: String | StringFieldRefInput,\n?     endsWith?: String | StringFieldRefInput,\n?     search?: String,\n?     not?: String | NestedStringNullableFilter | Null\n    }\n  },\n  select: {\n    bizcard_id: true,\n    url_alias: true\n  }\n}\n\nUnknown argument `mode`. Did you mean `lte`? Available options are marked with ?."
+    },
+    {
+      "socialLinkId": 727,
+      "reason": "\nInvalid `prisma.bizcard.findFirst()` invocation:\n\n{\n  where: {\n    url_alias: {\n      equals: \"ramduculan\",\n      mode: \"insensitive\",\n      ~~~~\n?     in?: String[] | Null,\n?     notIn?: String[] | Null,\n?     lt?: String | StringFieldRefInput,\n?     lte?: String | StringFieldRefInput,\n?     gt?: String | StringFieldRefInput,\n?     gte?: String | StringFieldRefInput,\n?     contains?: String | StringFieldRefInput,\n?     startsWith?: String | StringFieldRefInput,\n?     endsWith?: String | StringFieldRefInput,\n?     search?: String,\n?     not?: String | NestedStringNullableFilter | Null\n    }\n  },\n  select: {\n    bizcard_id: true,\n    url_alias: true\n  }\n}\n\nUnknown argument `mode`. Did you mean `lte`? Available options are marked with ?."
+    },
+    {
+      "socialLinkId": 727,
+      "reason": "\nInvalid `prisma.bizcard.findFirst()` invocation:\n\n{\n  where: {\n    url_alias: {\n      equals: \"ramduculan\",\n      mode: \"insensitive\",\n      ~~~~\n?     in?: String[] | Null,\n?     notIn?: String[] | Null,\n?     lt?: String | StringFieldRefInput,\n?     lte?: String | StringFieldRefInput,\n?     gt?: String | StringFieldRefInput,\n?     gte?: String | StringFieldRefInput,\n?     contains?: String | StringFieldRefInput,\n?     startsWith?: String | StringFieldRefInput,\n?     endsWith?: String | StringFieldRefInput,\n?     search?: String,\n?     not?: String | NestedStringNullableFilter | Null\n    }\n  },\n  select: {\n    bizcard_id: true,\n    url_alias: true\n  }\n}\n\nUnknown argument `mode`. Did you mean `lte`? Available options are marked with ?."
+    },
+    {
+      "socialLinkId": 727,
+      "reason": "\nInvalid `prisma.bizcard.findFirst()` invocation:\n\n{\n  where: {\n    url_alias: {\n      equals: \"ramduculan\",\n      mode: \"insensitive\",\n      ~~~~\n?     in?: String[] | Null,\n?     notIn?: String[] | Null,\n?     lt?: String | StringFieldRefInput,\n?     lte?: String | StringFieldRefInput,\n?     gt?: String | StringFieldRefInput,\n?     gte?: String | StringFieldRefInput,\n?     contains?: String | StringFieldRefInput,\n?     startsWith?: String | StringFieldRefInput,\n?     endsWith?: String | StringFieldRefInput,\n?     search?: String,\n?     not?: String | NestedStringNullableFilter | Null\n    }\n  },\n  select: {\n    bizcard_id: true,\n    url_alias: true\n  }\n}\n\nUnknown argument `mode`. Did you mean `lte`? Available options are marked with ?."
+    },
+    {
+      "socialLinkId": 817,
+      "reason": "\nInvalid `prisma.bizcard.findFirst()` invocation:\n\n{\n  where: {\n    url_alias: {\n      equals: \"nuñezdental_switch3d\",\n      mode: \"insensitive\",\n      ~~~~\n?     in?: String[] | Null,\n?     notIn?: String[] | Null,\n?     lt?: String | StringFieldRefInput,\n?     lte?: String | StringFieldRefInput,\n?     gt?: String | StringFieldRefInput,\n?     gte?: String | StringFieldRefInput,\n?     contains?: String | StringFieldRefInput,\n?     startsWith?: String | StringFieldRefInput,\n?     endsWith?: String | StringFieldRefInput,\n?     search?: String,\n?     not?: String | NestedStringNullableFilter | Null\n    }\n  },\n  select: {\n    bizcard_id: true,\n    url_alias: true\n  }\n}\n\nUnknown argument `mode`. Did you mean `lte`? Available options are marked with ?."
+    },
+    {
+      "socialLinkId": 1141,
+      "reason": "Bizcard 869 has no associated user_id"
+    }
+  ]
+}

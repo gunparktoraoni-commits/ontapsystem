@@ -1,0 +1,22 @@
+{
+  "lastSuccessfulIndex": 2164,
+  "lastSuccessfulRecord": {
+    "id": 4253,
+    "model_type": "App\\\\Models\\\\User",
+    "model_id": 563,
+    "uuid": "2e984277-b1ee-459d-88ad-4acb5f703c80",
+    "collection_name": "profile",
+    "name": "JVPARDO 3",
+    "file_name": "JVPARDO-3.jpg",
+    "created_at": "2026-03-02 13:30:13",
+    "updated_at": "2026-03-02 13:30:13",
+    "migration_script": "INSERT INTO media (id, model_type, model_id, uuid, collection_name, name, file_name, mime_type, disk, conversions_disk, size, manipulations, custom_properties, generated_conversions, responsive_images, order_column, created_at, updated_at) \nVALUES (4253, 'App\\\\Models\\\\User', 563, '2e984277-b1ee-459d-88ad-4acb5f703c80', 'profile', 'JVPARDO 3', 'JVPARDO-3.jpg', 'application/octet-stream', 'public', 'public', 0, '[]', '[]', '[]', '[]', 1, '2026-03-02 13:30:13', '2026-03-02 13:30:13');",
+    "disk_path": "profile/user_id_563/JVPARDO-3.jpg"
+  },
+  "totalRecords": 0,
+  "successCount": 1025,
+  "failedCount": 1140,
+  "skippedCount": 89,
+  "timestamp": "2026-07-15T15:24:57.806Z",
+  "r2Url": "https://www.portal.ontap.ph/client-images/profile/2e984277-b1ee-459d-88ad-4acb5f703c80"
+}

@@ -1,0 +1,23 @@
+# Hostinger / Apache — proxy app traffic to the Node.js process (next start).
+# Do NOT use ErrorDocument 404 /index.html — it serves HTML for missing .js files
+# and causes ChunkLoadError (MIME type text/plain).
+
+<IfModule mod_mime.c>
+  AddType application/javascript .js
+  AddType text/css .css
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Let Next.js serve hashed build assets and image optimizer routes.
+  RewriteRule ^_next/ - [L]
+
+  # Serve files that exist on disk under public/.
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Everything else → Node (Hostinger injects PORT; default 3000).
+  RewriteRule ^(.*)$ http://127.0.0.1:3000/$1 [P,L]
+</IfModule>

@@ -1,0 +1,784 @@
+ONTAP SYSTEM WALKTHROUGH
+Page-by-page guide for creating a user tutorial
+
+Purpose
+-------
+Use this document as the script and storyboard for a walkthrough of the
+OnTap system. Each portal is separate because menus and permissions depend
+on the signed-in role. A role may also see fewer pages than described here
+when its account permissions, company membership, subscription, or setup
+status do not include a feature.
+
+Recommended tutorial format
+---------------------------
+For each page:
+1. Show the page title and point out where it appears in the navigation.
+2. Explain the page's purpose before clicking anything.
+3. Demonstrate one representative task from start to finish.
+4. Explain unfamiliar buttons, filters, statuses, or confirmation dialogs.
+5. End by showing how to return to the dashboard or next page.
+
+Use a demo account and sample information. Do not show real customers'
+personal information, payment details, private messages, access tokens, or
+internal notes. Do not perform irreversible actions in a recording. The
+screens, available actions, and labels can change with account permissions.
+
+Common controls and vocabulary
+------------------------------
+- The left navigation opens pages within the current role portal. On a
+  phone, it may become a menu or bottom navigation.
+- The page title identifies the current page. Header icons may open calendar,
+  notifications, messaging, or account actions depending on the role.
+- A BizCard is a person's digital business profile/card. A public portfolio
+  is the shareable view of that BizCard.
+- A lead, an inquiry, and an order are different records. A lead is a
+  potential contact; an inquiry is a question or request; an order is a
+  purchase/workflow record.
+- A badge or status is a summary, not necessarily a completed action. Open
+  the record to read details and follow its next step.
+- Some menus are subscription- or permission-gated. If a page is not shown,
+  explain that the account may not have access rather than suggesting a
+  workaround.
+
+
+PRE-MADE EXPLANATION LIBRARY
+----------------------------
+The sections below are copy-ready explanations you can drop into tutorials,
+training guides, or product demos without needing to write new commentary for
+each page. Use each item as-is, or adjust only the names of the page and the
+sample record being shown.
+
+Ready-made explanations for core pages and features
+----------------------------------------------------
+1. Dashboard
+   This is the main overview page for the user's current role. It displays
+   the most important statistics, shortcuts, and recent activity in one place.
+   The user can quickly check their account status, open records needing
+   attention, and jump into the relevant page without searching through the
+   menu. It is a summary page, not the place where full edits are made.
+
+2. My BizCards
+   This page lists all BizCards linked to the user account. It allows the user
+   to view, open, manage, and create new cards. Each card has its own public
+   profile, and the user can switch between cards depending on the business or
+   identity they want to present. The list is used for management, while the
+   card editor is used for actual content changes.
+
+3. Create BizCard and Edit BizCard
+   This is the page used to build or update a BizCard profile. It includes
+   basic identity information, contact details, profile image, cover image,
+   biography, services, and other public profile fields. The page is designed
+   to help the user build the actual public view of their professional brand.
+   The preview shows how visitors will see the profile once the card is saved.
+
+4. Profile Image Crop
+   This tool lets the user choose the exact portion of the image that appears
+   in the circular profile image. The crop box represents the final visible
+   area, and the user can move the image or adjust the zoom to select the best
+   area. This prevents awkward or accidental cropping and ensures the most
+   important part of the photo is visible. Once the crop is accepted, the
+   system saves the selected area as the profile image.
+
+5. Cover Image Upload
+   This is the wider image area used for the top banner or hero section of a
+   BizCard. Unlike the profile image, the cover image is not circular and is
+   meant to be a broader visual element. It is used to showcase branding,
+   business identity, or a visual theme associated with the profile.
+
+6. Leads
+   This page shows potential contacts or interest that may develop into future
+   business relationships. It helps the user review leads, check details about
+   the person or company, and follow the next action if the lead should be
+   contacted or assigned. The page is mainly for tracking opportunities and
+   managing outreach.
+
+7. Inquiry
+   This page contains questions or requests submitted by visitors, clients, or
+   buyers. It is different from a lead because it represents a direct request
+   or question rather than a potential future contact. Users can read the
+   inquiry, review the related context, and respond or update its status if
+   the workflow allows it.
+
+8. Orders and My Orders
+   This section tracks purchases, sales activity, or assigned order records.
+   Users can review current status, open a specific order, and inspect the
+   details of what was purchased or requested. It is used to manage the
+   transaction lifecycle and keep track of a purchase or fulfillment flow.
+
+9. E-market
+   This is the marketplace area where users can browse, search, and review
+   available items, offers, or business listings. It acts like a digital
+   storefront or listing board where the user can inspect products, services,
+   or opportunities before taking a next step such as inquiry or purchase.
+
+10. Affiliate Status
+    This page shows the user's participation in affiliate or referral-related
+    activity. It provides visibility into eligibility, referral progress, and
+    reward or participation status. It helps the user understand whether they
+    are active, pending, or not yet eligible for a program.
+
+11. Associate
+    This page displays association, partnership, or referral connection data.
+    It shows current relationships, invitations, or connected accounts and
+    helps the user review collaboration status. This is useful for managing
+    business relationships within the system.
+
+12. Missions and Rewards
+    This page lists mission-based tasks or goals that users can complete to
+    earn rewards or unlock progress. Each mission explains the requirements,
+    the state of the user's progress, and the expected reward or outcome. It is
+    designed to encourage user engagement and completion of platform actions.
+
+13. Settings
+    This page stores account configuration and profile preferences. It can
+    include name, email, password, security settings, and other options that
+    affect account access or account identity. It is separate from BizCard
+    editing, which is used for public profile content rather than personal
+    account control.
+
+14. Messages and Client Communication
+    This area is used for direct conversations with clients, contacts, or team
+    members. It allows users to view conversation history, open a thread, and
+    send a reply with the appropriate context. The message system is not the
+    same as a task list or an order record; it is for communication.
+
+15. Company Management
+    This page is used by company administrators to manage the organization,
+    employee list, company profile, membership requests, and administrative
+    controls. It is the place to review company-level configuration and to
+    manage access within the company structure. Permissions here depend on the
+    admin's role and authority.
+
+16. Superadmin Management Pages
+    These are platform-level management pages available only to authorized
+    administrators. They are used for controlling users, companies, BizCards,
+    subscriptions, content, support records, and platform-wide operations. The
+    superadmin portal is more operational and broader in scope than the user or
+    company admin portal.
+
+17. Developer and Operations Portal
+    This portal is used by technical or operations users to monitor the health
+    of the system, review incidents, inspect logs, and check background jobs.
+    It is mainly for operational visibility rather than business or customer
+    tasks. It contains technical dashboards, audit timelines, API tools, and
+    platform health monitoring features.
+
+18. Onboarding and Account Setup
+    This flow helps a new user complete the initial account setup. It usually
+    includes account creation, verification, profile setup, and required steps
+    before the user can fully access the system. It is a guided process to make
+    sure the user has the information needed before entering the main portal.
+
+19. Physical BizCard Scan Flow
+    This feature allows a user to scan a physical business card and match it
+    against their account or profile. If a card is blank, the system guides the
+    user through the onboarding or registration flow. If the account already
+    has a virtual BizCard, the system may offer a merge option. This reduces
+    manual entry and helps the user connect real-world cards to their digital
+    identity.
+
+20. Merge BizCard Record Flow
+    This flow occurs when the user has an existing virtual BizCard and scans a
+    new physical card that matches a similar or new record. The user is asked
+    whether they want to merge the physical card into the digital record or
+    treat it as a separate card. This helps avoid duplicate records while still
+    giving the user control over the final outcome.
+
+End of ready-made explanation library
+------------------------------------
+Use the sections above as the system's standard explanation text for all core
+ports, features, and flows. The following portal breakdowns provide the role-
+by-role walkthrough details.
+
+
+PORTAL 1 - USER
+----------------
+Audience: individual OnTap account holders and BizCard owners.
+Goal of this portal: manage one's BizCards, contacts, enquiries, growth
+features, marketplace activity, and personal account.
+
+1. Dashboard
+   Navigation: Dashboard
+   Explain that this is the user's starting point and gives a quick overview
+   of account activity. Walk through the cards, counts, recent records, and
+   shortcuts that are actually present on the demo account. Click a shortcut
+   and show how it opens the full page for that item. If a card is empty,
+   explain what activity would populate it rather than inventing data.
+
+2. My BizCards
+   Navigation: My BizCards
+   Show the user's BizCards and explain how to open an existing card or start
+   creating another one. Demonstrate the distinction between the card list
+   (manage multiple cards) and the editor (change one card). If options for
+   status, ownership, or card actions appear, describe each using the on-screen
+   wording.
+
+   Creating or editing a BizCard
+   Reach this workflow from My BizCards using the visible create/edit action.
+   Explain that the form is the source for the public profile. Work through
+   its sections in order: identity and contact information, profile and cover
+   media, biography/occupation, social links, services or other available
+   profile sections, and visual theme. Use the on-screen preview to check
+   what visitors will see. Save or continue at the page's indicated step.
+
+   Profile-photo crop
+   When a profile image is selected, explain that the circular frame is the
+   final visible area. Drag the image to choose which part appears; use the
+   zoom controls or scroll gesture to adjust its scale; inspect the preview
+   before applying. This step lets the user choose the crop instead of
+   accepting an arbitrary center crop. Cover images use a separate, wider
+   frame. Cancel leaves the current image unchanged; Apply Crop accepts the
+   preview.
+
+3. BizCard details / editor
+   Reach this page by opening a card from the list. Show the card name and
+   detail sections, then demonstrate only the relevant edit action. The
+   live preview is a way to inspect the portfolio while editing; close it to
+   return to the form. Explain that a preview is not a save button: make sure
+   changes are saved using the page's own save/apply action.
+
+4. Create New BizCard
+   Reach this page from the create action. Introduce the form as a new,
+   separate card rather than an edit to the user's existing card. Explain
+   required fields as identified on screen, complete a sample card, preview
+   the result, and save. After saving, show where the new card appears in My
+   BizCards.
+
+5. BizCard overview / share page
+   If reached from a BizCard's dashboard/detail view, show the share tools.
+   Copy Portfolio URL copies the public link; explain where it can be shared.
+   Profile Completeness indicates which profile details may still be missing.
+   Recent Inquiries provides a quick way to review incoming activity. Do not
+   assume the public link is private: show only demo/public-safe information.
+
+6. Leads
+   Navigation: Leads
+   Explain this page as a place to review potential contacts captured for the
+   user's profile or business. Show how to scan the list and open a record
+   for more context. If search, filters, or export actions are present, apply
+   one visible filter and explain how to clear it. Explain what the displayed
+   status means before changing it.
+
+7. Inquiry
+   Navigation: Inquiry
+   Show requests or questions submitted by visitors. Open one sample item to
+   demonstrate the context and any response/status workflow shown in the
+   interface. Distinguish this from Leads (potential contact records) and
+   from Orders (purchase records). Avoid promising a response channel that
+   is not shown on screen.
+
+8. Affiliate Status
+   Navigation: Affiliate Status
+   Explain that this page shows the user's affiliate/referral relationship or
+   participation status. Point out any displayed eligibility, progress,
+   referral, or payout information using the actual account data. If the
+   user needs to apply or complete setup, show the on-screen next action.
+   Do not interpret a pending status as an approved or paid status.
+
+9. Associate
+   Navigation: Associate
+   Describe the collaboration/association feature using the page's labels.
+   Show how to review the current association or invitation state and where
+   to initiate or manage an association if those controls are available.
+   Explain that associations can affect which people or businesses are
+   connected in the system; use a test account for any invitation.
+
+10. E-market
+    Navigation: E-market
+    Introduce this as the user's marketplace for browsing available items or
+    offers. Demonstrate browsing/searching, opening an item, and the visible
+    next step (for example inquiry or checkout) without completing a real
+    purchase. Explain that checkout and order confirmation may open separate
+    pages.
+
+11. Missions
+    Navigation: Growth > Missions (when the account is eligible)
+    Explain missions as optional activities with a stated completion rule and
+    reward. Open a mission, read its requirements, and show where progress or
+    completion is indicated. Make clear that a reward is not earned just by
+    opening the mission. This menu may depend on subscription/access status.
+
+12. Settings
+    Navigation: Settings
+    Show account/profile and security settings available to the user. Explain
+    which fields change the account identity versus public BizCard content.
+    Demonstrate the save action and where to update a password or security
+    option if shown. Explain that changes to a BizCard are generally made in
+    its editor rather than here.
+
+Secondary user pages and entry flows
+------------------------------------
+These pages are available through a header shortcut, account flow, order
+link, or direct workflow; they may not appear in the main navigation.
+
+- Calendar: reachable from the calendar header icon when available. Explain
+  how to view scheduled items and change the displayed date/view using the
+  actual controls. Do not confuse a calendar entry with an order.
+- Analytics: use this page to review measured activity and date/filter
+  controls. Describe the meaning of each chart from its visible title and
+  legend; avoid claiming causation from a count or trend.
+- Contact Saves: review people who saved/saved contact details from the
+  user's card, when available. Explain the columns shown and privacy
+  boundaries.
+- My Orders and Order Details: open My Orders to review purchase records;
+  open one record to demonstrate its status and details. Keep order numbers
+  and personal/payment data out of the recording.
+- Onboarding: first-time setup that guides the user through account/profile
+  setup. Explain the progress/continue controls and that completing setup
+  helps unlock the normal portal experience.
+- Sign up, verify email, forgot password, and required password change:
+  demonstrate only with a test account. Explain these are account access
+  steps, not normal dashboard tasks. Verification confirms the account;
+  password reset/change should use the user's own secure email and password.
+
+
+PORTAL 2 - STAFF
+-----------------
+Audience: OnTap staff members who support clients and their business activity.
+Goal of this portal: assist assigned clients, manage client communications,
+and review client orders and product inquiries.
+
+1. Dashboard
+   Navigation: Dashboard
+   Show the staff overview and its recent inquiries, new client orders, and
+   messages sections if present. Explain that these are shortcuts into work
+   that may need attention, not a replacement for opening and reviewing each
+   record. Demonstrate opening one item and returning to the dashboard.
+
+2. My BizCards
+   Navigation: My BizCards
+   Explain that this area is for the staff member's own BizCards, not the
+   full set of client cards. Open a card to show its details or editor. If
+   this account is used to support another user's card, point to the client
+   workflow instead and respect the permissions shown.
+
+3. Associate
+   Navigation: Associate
+   Explain the staff member's association/referral information and any
+   displayed connection status. Show how to inspect the status or use a
+   displayed action. Keep user and client data private in any example.
+
+4. Messages
+   Navigation: Messages
+   Demonstrate the conversation list, opening a thread, and returning to the
+   list. Explain unread indicators and any search or client lookup. In a
+   thread, compose a reply, attach media/files only if needed, and explain
+   that message actions and the client information panel provide thread
+   context. Do not send a real message in the tutorial. A message is not the
+   same thing as an order update or internal note.
+
+5. Clients
+   Navigation: Clients
+   Explain that this is the staff member's assigned/managed client list.
+   Open a client to inspect available information. If edit, message, or
+   remove/drop controls appear, describe the consequences before use: editing
+   updates client information; messaging starts communication; removing a
+   client can affect the staff relationship. Use a sample record.
+
+6. Client Orders
+   Navigation: Client Orders
+   Show the order board/list and explain each status column exactly as it is
+   labeled in the current interface. Open an order to view its detail drawer,
+   then walk through the visible order information and status action. Do not
+   change a real order during the demo.
+
+7. Product Inquiries
+   Navigation: Product Inquiries
+   Open an inquiry and explain the client's note, order details, attachments,
+   and internal staff notes where present. Clearly distinguish internal
+   notes (for staff) from a reply visible to the client. Demonstrate the
+   relevant follow-up/status control only on a test record.
+
+8. Settings
+   Navigation: Settings
+   Explain the staff account settings and profile/security controls shown.
+   Demonstrate where to update account details and save. Avoid showing
+   password/security secrets on camera.
+
+Additional staff workflows
+--------------------------
+- Client Messages conversation detail: reached by opening a thread. Show how
+  to inspect media/files, client context, and the compose area. Verify the
+  intended recipient before sending.
+- Calendar, Analytics, Affiliate Status, Inquiry, E-market, and Services
+  may be available to particular staff accounts even when they are not part
+  of the standard navigation. If included in a role-specific tutorial, state
+  the access requirement and explain the page according to its visible data.
+- Verify account, verify email, and setup password are onboarding/access
+  pages for staff accounts, not routine work pages.
+
+
+PORTAL 3 - COMPANY ADMIN
+------------------------
+Audience: company administrators and authorized co-administrators.
+Goal of this portal: manage company information and employees while using
+the same BizCard, lead, inquiry, and marketplace tools as permitted.
+
+1. Dashboard
+   Navigation: Dashboard
+   Explain that the dashboard summarizes the company's OnTap activity. Point
+   out visible activity cards and shortcuts, explaining their reporting
+   period or status from the on-screen labels. Open one shortcut to show
+   where to find the complete record.
+
+2. My BizCards
+   Navigation: My BizCards
+   Demonstrate managing BizCards available to this admin account. Explain
+   whether the current view is the admin's own card or a company/employee
+   card by reading the owner information shown. Open a card to edit or view
+   it, and use preview/share controls only with test data.
+
+3. Leads
+   Navigation: Leads
+   Show how the admin reviews potential contacts. Explain available search,
+   filters, statuses, or actions from the labels on screen. Open a sample
+   record and show how the admin returns to the list.
+
+4. Inquiry
+   Navigation: Inquiry
+   Review incoming inquiries and explain how to inspect the request and its
+   current status. Demonstrate the visible response or follow-up action, if
+   available. Explain that an inquiry is not an employee request or order.
+
+5. Affiliate Status
+   Navigation: Affiliate Status
+   Show the affiliate status associated with this account/company. Explain
+   any displayed referral, eligibility, or progress information without
+   treating pending activity as finalized.
+
+6. Associate
+   Navigation: Associate
+   Explain the company's associate/referral connections as shown by the
+   page. Demonstrate reviewing an existing connection or starting a
+   permitted action. Use test users when showing invitations or changes.
+
+7. Company
+   Navigation: Company
+   This is the main company-management area. Show the company profile and
+   settings, then explain employee membership and requests:
+   - Join requests: inspect the requester and decide whether the request
+     should be approved or declined according to company policy.
+   - Employee details: open a person to inspect their company role/status.
+   - Add/edit employees: explain required fields and how to save a change.
+   - Remove employee: explain that this changes company membership and
+     should be confirmed only when authorized.
+   - Co-admin assignment/demotion: explain that this changes administrative
+     permissions, not just a display label.
+   - Ownership transfer: describe the confirmation and the significance:
+     ownership changes who controls the company. Do not execute this in a
+     tutorial.
+   - Restriction requests: show where to review the request and its status.
+   Emphasize that controls depend on the signed-in admin's permissions.
+
+8. E-market
+   Navigation: E-market
+   Show how an admin browses marketplace items and examines the visible
+   information. Demonstrate a non-purchasing path such as opening an item.
+   If the admin proceeds to inquiry/checkout, distinguish that workflow from
+   company management.
+
+9. Settings
+   Navigation: Settings
+   Explain personal/admin settings separately from Company settings. Show
+   which fields are account-level and which company-level, then demonstrate
+   save on a non-sensitive test field.
+
+Additional company-admin workflows
+----------------------------------
+- Employee List: reachable from the company-management workflow or by an
+  authorized route. Demonstrate Employee Management, adding an employee,
+  editing a test employee, or linking a physical card only if that control
+  is present. Explain that a linked physical card connects a real card to a
+  profile; verify the intended employee/card before saving.
+- Calendar: header shortcut where enabled. Show navigation of dates and
+  scheduled items, not an employee approval workflow.
+- Contact Saves and BizCard editor/creation: available through relevant
+  card links or routes; follow the User portal instructions, but make clear
+  which company member/card is being edited.
+- Some admin pages such as employee management or calendar may not appear
+  in the primary menu for every account. Their availability depends on role
+  and company permissions.
+
+
+PORTAL 4 - SUPERADMIN
+---------------------
+Audience: authorized OnTap platform administrators only.
+Goal of this portal: manage users, companies, BizCards, operations, content,
+commercial records, staff, and user feedback across the platform.
+
+Security for the tutorial
+-------------------------
+This is a privileged portal. Record with a dedicated demo account and test
+records only. Never show real user data, authentication details, private
+messages, payment information, or internal escalation notes. Avoid executing
+delete, ownership-transfer, account-access, or impersonation actions.
+
+1. Dashboard
+   Navigation: Dashboard
+   Explain this as the platform-wide operational overview. Describe each
+   displayed metric by its label and timeframe. Open one safe shortcut to
+   demonstrate how an overview item leads to the relevant management page.
+
+2. Generate BizCards
+   Navigation: Generate BizCards
+   Demonstrate the platform-admin flow for creating/generating BizCards.
+   Explain how to review the input/owner information and verify it before
+   submitting. After a test creation, show where the card can be found.
+   Distinguish this from a user creating their own BizCard.
+
+3. Users
+   Navigation: Users
+   Demonstrate searching and paging through the user list. Explain how to
+   select a user and open their profile/details. If bulk selection or export
+   is present, explain that it applies to the selected rows and verify the
+   selection before using it. User data is sensitive; use a demo record.
+
+4. User Workspace / user details
+   Reach from a user record. Show the user identity and available sections.
+   Explain that this is an administrative view and that actions can affect
+   the user's account. If impersonation/access-as-user is demonstrated,
+   explain that it is privileged, should be used only when authorized for
+   support, and must be ended when finished. Never disclose credentials.
+
+5. Companies
+   Navigation: Companies
+   Search or review the company directory and open a company record. Explain
+   how the list differs from the company admin's own Company page. Follow
+   visible counts/statuses and open company details for deeper management.
+
+6. Company details
+   Reach from a company record. Explain the company profile, members, and
+   administrative status shown. Describe each action using its confirmation
+   dialog. Ownership or membership changes require special care and should
+   not be performed on production records in a tutorial.
+
+7. Company Creation Requests
+   Reach from the platform's company-request workflow when available.
+   Demonstrate how to inspect a pending request, review its submitted
+   information, and make an approve/decline decision only if authorized.
+   Explain that pending means no final decision has been applied.
+
+8. BizCards
+   Navigation: BizCards
+   Explain that this is a platform-wide BizCard directory, unlike a user's
+   My BizCards page. Search for a demo card, open it, and show owner/context.
+   Check filters carefully before any action that changes or deletes a card.
+
+9. Recycle Bin
+   Navigation: Recycle Bin
+   Explain that this page is for deleted/archived records that may have a
+   recovery or permanent-removal action. Demonstrate inspection only. Before
+   any restore or purge, verify the record type, owner, and consequence.
+   Do not permanently delete in a walkthrough.
+
+10. Affiliates
+    Navigation: Affiliates
+    Show the platform-level affiliate list and a demo affiliate detail. Explain
+    status, profile, or referral information as displayed. Do not interpret
+    pending status as an approved payout.
+
+11. Orders
+    Navigation: Orders
+    Explain this as platform-wide order review. Open a demo order and show its
+    status and details. Avoid sharing personal, billing, or payment data and
+    do not alter a production order during recording.
+
+12. Product Inquiries
+    Navigation: Product Inquiries
+    Open an inquiry and review its note, related order/product information,
+    attachments, and visible status/actions. Explain which notes are
+    internal. Do not display private attachments or notes from real clients.
+
+13. Support Escalations
+    Navigation: Support Escalations
+    Explain that these are support conversations or issues raised for higher
+    attention. Show how the list identifies escalated threads and how to open
+    one for context. Use a fabricated/demo thread; escalation content can be
+    sensitive.
+
+14. Subscriptions
+    Navigation: Subscriptions
+    Show subscription transactions/statuses. Explain the difference between
+    a plan/subscription state and a payment transaction status using the
+    displayed terms. Do not show card numbers or real transaction identifiers.
+
+15. Promos & Deals
+    Navigation: Promos & Deals
+    Explain how platform promotions are reviewed or managed. Show the visible
+    status, dates, eligibility, and audience controls. Before saving a promo,
+    verify dates and audience because the change may affect many users.
+
+16. Missions & Rewards
+    Navigation: Missions & Rewards
+    Explain how platform missions and their rewards are configured or
+    monitored. Review requirements, availability, and reward information
+    before showing a test item. Be explicit about the completion criteria.
+
+17. Manage Content
+    Navigation: Manage Content
+    Demonstrate how platform-managed content is found and edited. Explain
+    where content appears to users before publishing. Review text, media,
+    audience, and status carefully; a published change may be broadly visible.
+
+18. User Experience - Overview
+    Navigation: User Experience > Overview
+    Explain this as an aggregate view of user feedback and product experience.
+    Describe charts/counts using their labels and time filters. Do not imply
+    that a trend proves why a user behaved a certain way.
+
+19. User Experience - Feedback
+    Navigation: User Experience > Feedback
+    Show how to review submitted feedback and open its detail. Explain any
+    response/status actions shown. Treat feedback as user-provided private
+    content and use a demo entry.
+
+20. User Experience - Feature Requests
+    Navigation: User Experience > Feature Requests
+    Demonstrate reviewing a feature request and its status. Explain how to
+    distinguish a request from a confirmed roadmap item. Do not promise a
+    delivery date unless the platform explicitly provides one.
+
+21. Announcements
+    Navigation: User Experience > Announcements (opens the broadcast area in
+    Settings)
+    Explain the audience and publication controls before creating a draft.
+    Demonstrate preview/review if available. A broadcast can reach many
+    accounts, so do not publish a real announcement from the tutorial.
+
+22. Staff
+    Navigation: Staffs
+    Show the platform staff list and the visible role/status controls. Explain
+    that staff access determines what tools and data a person can reach.
+    Never grant or revoke a real account's access during recording.
+
+23. Settings
+    Navigation: Settings
+    Show available administrator profile/security settings and tabs. Explain
+    password and two-factor authentication options at a high level. If the
+    broadcast/announcement tab is shown here, refer to the Announcements
+    section. Do not reveal recovery codes or security settings secrets.
+
+24. Calendar
+    If available from the header, show calendar navigation and visible
+    platform events. Explain date controls and how to return to the current
+    date. Do not treat it as an order scheduler unless the event details say
+    so.
+
+25. BizCard editor and creation detail
+    Reach from Generate BizCards or a BizCard row. Explain that these pages
+    operate on one selected card. Confirm the owner and card name before
+    editing. Use the preview, save, and crop controls with test images only.
+
+
+PORTAL 5 - DEVELOPER / OPERATIONS
+---------------------------------
+Audience: authorized technical operations users; not a normal customer role.
+Goal of this portal: monitor application health, investigate technical
+incidents, review operational evidence, and manage controlled system settings.
+
+This section is an operator orientation, not a public end-user tutorial.
+Use non-production or redacted data. Do not run destructive controls, replay
+production jobs, expose API credentials, or share raw logs that contain
+personal information.
+
+1. Overview
+   Navigation: Overview
+   Explain the high-level operational status and links to deeper monitoring.
+   Identify time range and status labels before interpreting a metric.
+
+2. Incidents
+   Navigation: Incidents
+   Show how to review incident records, severity/state, and available details.
+   Demonstrate opening an existing resolved/demo incident. Explain the
+   difference between acknowledging, updating, and resolving if those actions
+   are present.
+
+3. Escalations
+   Navigation: Escalations
+   Explain how escalated operational issues are listed and tracked. Open a
+   redacted demo item, review the context, and show its status/history.
+
+4. Theme Requests
+   Navigation: Theme Requests
+   Show where theme-related requests arrive and how to inspect their status
+   and context. Explain the handoff/review process shown in the interface;
+   do not promise implementation solely because a request is listed.
+
+5. Impact
+   Navigation: Impact
+   Explain the operational/product impact metrics using their on-screen
+   labels, selected period, and filters. Avoid attributing cause from a chart
+   without supporting evidence.
+
+6. Auth Health
+   Navigation: Auth Health
+   Show authentication health indicators and explain what an alert means at
+   a high level. Never display session tokens, secrets, or personally
+   identifiable data from authentication records.
+
+7. Jobs & Integrations
+   Navigation: Jobs & Integrations
+   Demonstrate reviewing job/integration status and timestamps. Explain
+   success, warning, and failure states using the page's definitions. Before
+   retrying or triggering a job, check whether it is safe and idempotent;
+   do not trigger production work during a tutorial.
+
+8. Audit Timeline
+   Navigation: Audit Timeline
+   Explain this as a chronological record of administrative/system activity.
+   Demonstrate filtering by date or event type if available. Audit records
+   are for investigation; avoid sharing names or private event data.
+
+9. Controls
+   Navigation: Controls
+   Explain the feature/control groups and current states. Show how to inspect
+   a control and its impact. Do not toggle production controls; document the
+   approval and rollback procedure before any real change.
+
+10. Notice Board
+    Navigation: Notice Board
+    Show published notices and the composer if authorized. Explain the notice
+    type/audience and any question or media options visible. Preview and
+    review the audience; do not publish a live notice during the walkthrough.
+
+11. System Health
+    Navigation: System Health
+    Explain the health center's status sections and how to refresh or inspect
+    details. State the time of the displayed status. Do not treat a green
+    indicator as proof every user flow works.
+
+12. API Explorer
+    Navigation: API Explorer
+    Explain that this is a technical endpoint exploration/testing tool.
+    Identify method, path, request inputs, and response area. Use safe,
+    read-only demo requests. Do not display or transmit credentials or
+    execute write/delete requests in a public recording.
+
+13. Clients
+    Navigation: Clients
+    Explain this as an operational client lookup/workspace, not a general
+    customer-management page. Demonstrate searching only with a demo account
+    and show the minimum necessary details.
+
+14. Settings
+    Navigation: Settings
+    Explain the available operator preferences and system settings. Separate
+    user preferences from global controls. Any system-wide change should be
+    made only under the approved operations process.
+
+Additional developer-only pages
+-------------------------------
+The application also has routes for Dashboard, Concerns, Error Logs,
+Integrity, Jobs, and other operational screens. They may be absent from the
+standard navigation or visible only to users with the relevant permission.
+If these are part of the actual operator's workflow, add a supplemental
+section after confirming each page's live controls and redaction rules.
+
+
+Suggested closing for the walkthrough
+--------------------------------------
+"Your menu depends on your OnTap role and permissions, so your screen may not
+show every page in this guide. Use the left menu or the page's own shortcuts
+to move between tasks. Check the record owner and status before saving or
+changing anything. For account or access problems, use the official support
+channel shown in your portal."
