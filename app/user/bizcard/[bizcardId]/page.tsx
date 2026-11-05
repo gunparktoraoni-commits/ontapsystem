@@ -423,7 +423,7 @@ export default function BizcardDashboardPage() {
                     initials
                   )}
                 </div>
-                <div className="min-w-0">
+                <div className="relative top-3 min-w-0 flex-1 text-left sm:top-0">
                   <div className="flex flex-wrap items-center gap-2 sm:mb-1">
                     <span
                       className={`inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-[10px] font-bold uppercase tracking-wider ${
@@ -443,10 +443,10 @@ export default function BizcardDashboardPage() {
                       {bizcard.bizcard_type || "Virtual"}
                     </span>
                   </div>
-                  <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 tracking-tight truncate">
+                  <h1 className="w-full truncate text-left text-xl font-extrabold tracking-tight text-slate-900 sm:text-2xl">
                     {bizcard.bizcard_name}
                   </h1>
-                  <p className="text-sm text-slate-500 font-medium truncate mt-0.5">
+                  <p className="mt-0.5 w-full truncate text-left text-sm font-medium text-slate-500">
                     {displayName}
                     {bizcard.professional_title ? ` · ${bizcard.professional_title}` : ""}
                   </p>
@@ -500,10 +500,13 @@ export default function BizcardDashboardPage() {
           variants={fadeUp}
           initial="hidden"
           animate="show"
-          className="grid grid-cols-1 gap-3 rounded-2xl border border-gray-100 bg-white p-3 shadow-sm sm:grid-cols-2 lg:grid-cols-4 sm:gap-0 sm:divide-x sm:divide-slate-100 sm:p-0"
+          className="grid grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-4"
         >
           {statItems.map((s) => (
-            <div key={s.label} className="flex items-center gap-3 px-4 py-4 sm:px-5 sm:py-5">
+            <div
+              key={s.label}
+              className="flex items-center gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-4 shadow-sm sm:px-5 sm:py-5"
+            >
               <div
                 className="h-9 w-9 rounded-lg flex items-center justify-center shrink-0"
                 style={{ backgroundColor: `${ACCENT}12` }}

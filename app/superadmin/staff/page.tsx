@@ -3,9 +3,13 @@
 import { useCallback, useEffect, useMemo, useState } from "react";
 import {
   Activity,
+  Building2,
+  CalendarDays,
   ChevronLeft,
   ChevronRight,
+  Clock3,
   Eye,
+  Mail,
   Pencil,
   Radio,
   Search,
@@ -279,7 +283,7 @@ function StaffAvatar({
 }) {
   const [failed, setFailed] = useState(false);
   const sizeClass =
-    size === "lg" ? "h-14 w-14 text-base" : size === "sm" ? "h-8 w-8 text-xs" : "h-10 w-10 text-sm";
+    size === "lg" ? "h-[76px] w-[76px] text-base" : size === "sm" ? "h-8 w-8 text-xs" : "h-10 w-10 text-sm";
 
   if (imageUrl && !failed) {
     return (
@@ -1124,7 +1128,6 @@ export default function StaffManagementPage() {
             />
             {formErrors.email && <p className="mt-1 text-xs text-rose-600">{formErrors.email}</p>}
           </div>
-
           <div>
             <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-[#6f82a8]">Position</label>
             <select
@@ -1147,7 +1150,6 @@ export default function StaffManagementPage() {
               ))}
             </select>
           </div>
-
           <div>
             <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-[#6f82a8]">Department</label>
             <select
@@ -1162,7 +1164,6 @@ export default function StaffManagementPage() {
               ))}
             </select>
           </div>
-
           {formState.roleKey === "custom" && (
             <div className="sm:col-span-2">
               <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-[#6f82a8]">Custom Position Title</label>
@@ -1176,7 +1177,6 @@ export default function StaffManagementPage() {
               {formErrors.customRole && <p className="mt-1 text-xs text-rose-600">{formErrors.customRole}</p>}
             </div>
           )}
-
           <div className="sm:col-span-2">
             <label className="mb-1 block text-xs font-semibold uppercase tracking-wide text-[#6f82a8]">Status</label>
             <select
@@ -1190,28 +1190,49 @@ export default function StaffManagementPage() {
           </div>
         </div>
       </PortalModal>
-
       <PortalModal
         open={Boolean(viewingStaff)}
         onClose={() => setViewingStaff(null)}
-        title="Staff Details"
-        size="sm"
+        title="STAFF DETAIL"
+        description="STAFF DIRECTORY / PROFILE"
+        size="md"
+        className="max-w-[520px] max-sm:mb-3 max-sm:w-[calc(100%-1.5rem)] max-sm:rounded-2xl"
+        headerClassName="border-b-0 bg-[#214276] px-5 py-4 sm:px-6 sm:py-5 [&_h2]:!text-white [&_p]:!text-blue-100 [&_button]:!text-blue-100 [&_button:hover]:bg-white/10 [&_button:hover]:!text-white [&_button]:focus:ring-white/50"
+        bodyClassName="px-5 py-5 sm:px-6 sm:py-6"
       >
         {viewingStaff ? (
-          <div className="space-y-4 text-sm text-[#4f6188]">
-            <div className="flex items-center gap-3">
-              <StaffAvatar name={viewingStaff.fullName} imageUrl={viewingStaff.profileImage} size="lg" />
-              <div>
-                <p className="text-base font-semibold text-[#2b467c]">{viewingStaff.fullName}</p>
-                <p className="text-xs text-[#6f82a8]">{viewingStaff.email}</p>
+          <div className="space-y-5 text-sm text-[#4f6188]">
+            <div className="flex min-w-0 items-center gap-4">
+              <div className="[&>img]:rounded-2xl [&>img]:ring-0 [&>span]:rounded-2xl">
+                <StaffAvatar name={viewingStaff.fullName} imageUrl={viewingStaff.profileImage} size="lg" />
               </div>
+              <div className="min-w-0">
+                <p className="break-words text-lg font-semibold leading-6 text-[#243b63]">{viewingStaff.fullName}</p>
+                <p className="mt-1 text-sm text-[#647894]">{viewingStaff.roleLabel}</p>
+                <span
+                  className={`mt-2 inline-flex items-center rounded-full border px-2.5 py-1 text-xs font-medium ${getStatusBadgeClass(viewingStaff.status)}`}
+                >
+                  {viewingStaff.status}
+                </span>
+              </div> 
             </div>
-            <div className="space-y-2 border-t border-[#e4edf9] pt-3">
-              <p><span className="font-semibold text-[#2b467c]">Role:</span> {viewingStaff.roleLabel}</p>
-              <p><span className="font-semibold text-[#2b467c]">Department:</span> {viewingStaff.departmentLabel}</p>
-              <p><span className="font-semibold text-[#2b467c]">Status:</span> {viewingStaff.status}</p>
-              <p><span className="font-semibold text-[#2b467c]">Joined:</span> {formatDateTime(viewingStaff.joinedAt)}</p>
-              <p><span className="font-semibold text-[#2b467c]">Last login:</span> {formatDateTime(viewingStaff.lastLoginAt)}</p>
+            <div className="space-y-1 border-t border-[#e0e8f2] pt-4">
+              {[
+                { label: "Email", value: viewingStaff.email, Icon: Mail },
+                { label: "Department", value: viewingStaff.departmentLabel, Icon: Building2 },
+                { label: "Joined", value: formatDateTime(viewingStaff.joinedAt), Icon: CalendarDays },
+                { label: "Last login", value: formatDateTime(viewingStaff.lastLoginAt), Icon: Clock3 },
+              ].map(({ label, value, Icon }) => (
+                <div key={label} className="flex min-w-0 items-center gap-3 rounded-xl px-1 py-2">
+                  <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#eff4fa] text-[#315b93]">
+                    <Icon aria-hidden="true" className="h-5 w-5" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="text-sm leading-5 text-[#71839d]">{label}</p>
+                    <p className="break-words text-sm font-medium leading-5 text-[#2b4165]">{value}</p>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         ) : null}

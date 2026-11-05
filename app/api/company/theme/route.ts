@@ -1,13 +1,14 @@
 import { NextRequest } from "next/server";
 import { prisma } from "@/server/lib/prisma";
 import { checkRateLimit } from "@/server/lib/rate-limit";
-import { getClientIp, getUserAgent, resolveRequestSession } from "@/server/lib/auth";
+import { getClientIp, getUserAgent, resolveRequestSession, type RequestSessionResult } from "@/server/lib/auth";
 import { getRequestId, jsonAppError, jsonSuccess, jsonUnknownError } from "@/lib/errors/http";
 import { AppError } from "@/lib/errors/types";
 import { actorUserIdFromSession, ensureCompanyPermission,
   ensureCompanyRole,
   ensurePrimaryAdmin,
   logCompanyAudit,
+  resolveCompanyThemePolicyForUser,
   resolveCompanyActorContext,
   syncAllMemberBizcardsToCompanyTheme, } from "@/server/lib/company";
 import {
@@ -45,6 +46,21 @@ function parseThemeBody(input: unknown, requestId: string): { company_theme: str
   return { company_theme: theme };
 }
 
+async function resolveThemeActorContext(auth: RequestSessionResult, requestId: string) {
+  const userId = actorUserIdFromSession(auth);
+  const policy = await resolveCompanyThemePolicyForUser(userId);
+  const context = await resolveCompanyActorContext({
+    userId,
+    requestId,
+    ...(policy.companyId ? { companyId: BigInt(policy.companyId) } : {}),
+  });
+  const isSuperadminImpersonation =
+    Boolean(auth.impersonation) &&
+    auth.session?.role.trim().toLowerCase() === "super_admin";
+
+  return { context, isSuperadminImpersonation };
+}
+
 export async function GET(request: NextRequest) {
   const requestId = getRequestId(request.headers);
   const startedAt = Date.now();
@@ -67,12 +83,11 @@ export async function GET(request: NextRequest) {
       throw createCompanyError(CompanyErrorCode.UNAUTHORIZED_COMPANY_ACTION, "Authentication required.", 401, requestId);
     }
 
-    const context = await resolveCompanyActorContext({
-      userId: actorUserIdFromSession(auth),
-      requestId,
-    });
-    ensureCompanyRole(context, ["admin", "manager"], requestId);
-    ensureCompanyPermission(context, "edit_company", requestId);
+    const { context, isSuperadminImpersonation } = await resolveThemeActorContext(auth, requestId);
+    if (!isSuperadminImpersonation) {
+      ensureCompanyRole(context, ["admin", "manager"], requestId);
+      ensureCompanyPermission(context, "edit_company", requestId);
+    }
 
     const data = await getCompanyThemeContext(context.companyId);
 
@@ -110,13 +125,12 @@ export async function PUT(request: NextRequest) {
       throw createCompanyError(CompanyErrorCode.UNAUTHORIZED_COMPANY_ACTION, "Authentication required.", 401, requestId);
     }
 
-    const context = await resolveCompanyActorContext({
-      userId: actorUserIdFromSession(auth),
-      requestId,
-    });
-    ensureCompanyRole(context, ["admin", "manager"], requestId);
-    ensureCompanyPermission(context, "edit_company", requestId);
-    ensurePrimaryAdmin(context, requestId);
+    const { context, isSuperadminImpersonation } = await resolveThemeActorContext(auth, requestId);
+    if (!isSuperadminImpersonation) {
+      ensureCompanyRole(context, ["admin", "manager"], requestId);
+      ensureCompanyPermission(context, "edit_company", requestId);
+      ensurePrimaryAdmin(context, requestId);
+    }
 
     let body: { company_theme: string };
     try {
@@ -153,14 +167,25 @@ export async function PUT(request: NextRequest) {
 
     await logCompanyAudit({
       companyId: context.companyId,
-      userId: context.userId,
-      action: "company.theme.updated",
+      userId: isSuperadminImpersonation ? BigInt(auth.session.userId) : context.userId,
+      action: isSuperadminImpersonation
+        ? "superadmin.company.theme.updated"
+        : "company.theme.updated",
       requestId,
       ipAddress: ip,
       userAgent,
       details: {
         company_theme: resolvedTheme,
         bizcards_updated: bizcardsUpdated,
+        ...(isSuperadminImpersonation
+          ? {
+              actor_context: {
+                original_user_id: auth.session.userId.toString(),
+                effective_user_id: context.userId.toString(),
+                impersonation_token_id: auth.impersonation?.tokenId ?? null,
+              },
+            }
+          : {}),
       },
     });
 

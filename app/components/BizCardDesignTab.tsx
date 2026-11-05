@@ -392,7 +392,10 @@ export default function DesignTab({
         try {
           await saveCompanyTheme(normalizedTheme);
         } catch {
-          // Toast already shown; keep local selection for preview continuity.
+          setSelectedTheme(selectedTheme);
+          if (bizCard.urlAlias && current) {
+            publishThemeToLocalCache(bizCard.urlAlias, current);
+          }
         }
         return;
       }

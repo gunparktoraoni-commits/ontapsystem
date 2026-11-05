@@ -15,6 +15,7 @@ type PortalModalProps = {
   footer?: React.ReactNode;
   size?: "sm" | "md" | "lg" | "xl";
   className?: string;
+  headerClassName?: string;
   /** Optional classes for the scrollable body region (e.g. overflow-hidden for split panes). */
   bodyClassName?: string;
   /** When true, Escape and overlay clicks do not close the modal. */
@@ -37,6 +38,7 @@ export function PortalModal({
   footer,
   size = "md",
   className,
+  headerClassName,
   bodyClassName,
   preventClose = false,
 }: PortalModalProps) {
@@ -155,7 +157,12 @@ export function PortalModal({
               className,
             )}
           >
-            <div className="flex shrink-0 items-start justify-between gap-3 border-b border-gray-100 px-4 py-4 sm:gap-4 sm:px-6 sm:py-5">
+            <div
+              className={cn(
+                "flex shrink-0 items-start justify-between gap-3 border-b border-gray-100 px-4 py-4 sm:gap-4 sm:px-6 sm:py-5",
+                headerClassName,
+              )}
+            >
               <div className="min-w-0">
                 <h2
                   id={titleId}

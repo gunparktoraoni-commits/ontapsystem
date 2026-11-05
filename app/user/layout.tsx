@@ -1225,7 +1225,7 @@ export default function UserLayout({
             role="alert"
             aria-live="polite"
           >
-            <div className="flex items-center justify-between gap-3">
+            <div className="flex flex-wrap items-center gap-3 sm:flex-nowrap sm:justify-between">
               {/* Left: Impersonation Mode badge */}
               <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full border border-[#d97706] bg-[#d97706]/15 px-3 py-1 text-xs font-semibold text-[#fbbf24]">
                 <svg
@@ -1245,7 +1245,7 @@ export default function UserLayout({
               </span>
 
               {/* Center: impersonation label */}
-              <p className="min-w-0 flex-1 text-center text-sm font-medium text-white">
+              <p className="order-3 basis-full text-center text-sm font-medium text-white sm:order-none sm:min-w-0 sm:flex-1">
                 You are impersonating:{" "}
                 <span className="font-semibold">{impersonatedName}</span>
               </p>
@@ -1254,7 +1254,7 @@ export default function UserLayout({
               <button
                 type="button"
                 onClick={() => void handleEndImpersonation()}
-                className="shrink-0 rounded-lg border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-white/20"
+                className="ml-auto shrink-0 rounded-lg border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-white transition-colors hover:bg-white/20 sm:ml-0"
               >
                 Exit
               </button>

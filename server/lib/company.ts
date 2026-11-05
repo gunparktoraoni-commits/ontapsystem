@@ -185,25 +185,38 @@ export async function resolveCompanyThemePolicyForUser(userId: bigint): Promise<
   });
 
   let companyId = user?.company_id ?? null;
+  let ambiguousCompanyContext = false;
 
   if (!companyId) {
-    const employment = await prisma.companyEmployee.findFirst({
+    const employments = await prisma.companyEmployee.findMany({
       where: { user_id: userId, is_active: true },
       select: { company_id: true },
+      take: 2,
     });
-    companyId = employment?.company_id ?? null;
+    if (employments.length === 1) {
+      companyId = employments[0].company_id;
+    } else if (employments.length > 1) {
+      ambiguousCompanyContext = true;
+    }
   }
 
   if (!companyId) {
-    const ownedCompany = await prisma.company.findFirst({
+    const ownedCompanies = await prisma.company.findMany({
       where: { admin_id: userId },
       select: { company_id: true },
+      take: 2,
     });
-    companyId = ownedCompany?.company_id ?? null;
+    if (ownedCompanies.length === 1) {
+      companyId = ownedCompanies[0].company_id;
+    } else if (ownedCompanies.length > 1) {
+      ambiguousCompanyContext = true;
+    }
   }
 
   if (!companyId) {
-    return emptyPolicy();
+    return ambiguousCompanyContext
+      ? { ...emptyPolicy(), managedByCompany: true }
+      : emptyPolicy();
   }
 
   const company = await prisma.company.findUnique({

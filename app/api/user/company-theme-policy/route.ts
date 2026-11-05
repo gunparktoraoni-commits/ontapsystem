@@ -44,9 +44,9 @@ export async function GET(request: NextRequest) {
     const effectiveUserId = BigInt(resolveEffectiveUserId(auth));
     const policy = await resolveCompanyThemePolicyForUser(effectiveUserId);
 
-    // Under active impersonation, Super Admin has full authority to change themes
-    // in the Design tab — do not lock the UI even if the target is company-managed.
-    const managedByCompany = auth.impersonation ? false : policy.managedByCompany;
+    // Impersonation can change the company theme only after a company is resolved.
+    const managedByCompany =
+      auth.impersonation && policy.companyId ? false : policy.managedByCompany;
 
     return jsonSuccess(
       {
@@ -56,7 +56,7 @@ export async function GET(request: NextRequest) {
         is_hitachi_company: policy.isHitachiCompany,
         is_hitachi_company_admin: policy.isHitachiCompanyAdmin,
         can_change_company_theme: auth.impersonation
-          ? true
+          ? Boolean(policy.companyId)
           : policy.canChangeCompanyTheme,
         is_primary_admin: policy.isPrimaryAdmin,
         my_role: policy.myRole,
